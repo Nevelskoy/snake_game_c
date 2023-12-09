@@ -10,9 +10,9 @@
 //#define AUTOMATIC
 
 int main() {
-	
+
 	unsigned int codeKey = -1;
-	DIRECTION direct = RIGHT;
+	
 	snake_x[0] = (columns / 2);
 
 
@@ -25,7 +25,7 @@ int main() {
 	std::cout << "Welcom to the Snake-game! Press any key to start..." << std::endl;
 	_getch();
 
-	game_on = true;
+
 	while (game_on) {
 		// set_food()			2.1.	Установка еды на поле 
 		// clear_snake()		2.2.	Очистка старых позиций змейки в поле 
