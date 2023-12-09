@@ -11,14 +11,12 @@
 
 int main() {
 
-	unsigned int codeKey = -1;
-	
 	snake_x[0] = (columns / 2);
 
 
 	// init_game()				 1.1.	инициализация игры 
 	// init_field()				 1.2.	инициализация игрового поля 
-	// init_snake()				 1.3.	инициализация змейки 
+	init_snake();				// 1.3.	инициализация змейки 
 	// init_food()						инициализация еды
 	// set_snake()			 	1.5.	“Установка” змейки в поле игры 
 	// print_field()			1.6.	Вывод поля игры на экран 	
@@ -27,137 +25,24 @@ int main() {
 
 
 	while (game_on) {
-		// set_food()			2.1.	Установка еды на поле 
-		// clear_snake()		2.2.	Очистка старых позиций змейки в поле 
-		// check_eating()		2.3.	Проверка не съела ли еду змейка 
-		// move_snake()			2.4.	Передвижение змейки 
-		// check_snake()		2.5.	Проверка не уперлась  ли змейка в граничный элемент 
-		// set_snake()			2.6.	Установка новых позиций змейки в поле игры
-		// print_field()		2.7.	Вывод поля игры на экран 
-		// check_game()			2.8.	Проверка завершения игры 
+		clear_snake();
+		print_field();
 
-		// Если автоматический режим работы, то
-		//
-
-		// Если пошаговый режим работы, то
-		//
-
-		system("cls");
-		//============= BEGIN DRAWING =============
-		for (int i = 0; i < columns; i++) {
-			std::cout << borderL_symbol;
-		}
-		std::cout << std::endl;
-		std::cout << borderV_symbol;
-		for (int i = 0; i < size_field; i++) {
-			if (field[i] > 0) {
-				std::cout << static_cast<char>(field[i]);
-				field[i] = 0;
-			}
-			else {
-				std::cout << field_symbol;
-			}
-		}
-		std::cout << borderV_symbol << std::endl;
-		for (int i = 0; i < columns; i++) {
-			std::cout << borderL_symbol;
-		}
-		//============= END DRAWING =============	
-
-		//============= BEGIN INPUT KEY =============
 #ifdef AUTOMATIC
-		Sleep(timeout);
-		if (_kbhit()) {
-			codeKey = _getch();
-			if (codeKey == ESC) {
-				game_on = false;
-			}
-		}
-		if (codeKey == RIGHT_ARROW) {
-			direct = RIGHT;
-		}
-		else if (codeKey == LEFT_ARROW) {
-			direct = LEFT;
-		}
+		handle_cmd(0);
 #else	
-		codeKey = _getch();
-		if (codeKey == ESC) {
-			game_on = false;
-		}
-		else if(codeKey == 224) {
-			codeKey = _getch();
-		}
-
-		if (codeKey == RIGHT_ARROW) {
-			direct = RIGHT;
-		}
-		else if (codeKey == LEFT_ARROW) {
-			direct = LEFT;
-		}
+		handle_cmd(true);
 #endif  
-		//============= END INPUT KEY =============
+		move_snake();
+		set_snake();
+		check_eating();
+		check_game();
+		set_food();
 
-		//============= BEGIN LOGIC =============	
-		if (direct == RIGHT) {
-			snake_x[0]++;
-		}
-		else if (direct == LEFT) {
-			snake_x[0]--;
-		}
-
-		if (snake_x[0] > size_field - 1) {
-			snake_x[0] = 0;
-		}
-		else if (snake_x[0] < 0) {
-			snake_x[0] = size_field - 1;
-		}
-
-		if (food_x == snake_x[0]) {
-			snake_size++;
-			food_flag = false;
-		}
-
-		if (snake_size > L - 1) {                //  (- 1) - the size of the food
-			std::cout << std::endl;
-			std::cout << "GAME OVER";
-			_getch();
-			game_on = false;
-		}
-
-		for (int i = 1; i < snake_size; i++) {
-			if (direct == RIGHT) {
-				snake_x[i] = snake_x[0] - i;
-				if (snake_x[i] < 0) {
-					snake_x[i] = size_field - (snake_size - i);
-				}
-			}
-			else if (direct == LEFT) {
-				snake_x[i] = snake_x[0] + i;
-				if (snake_x[i] > size_field - 1) {
-					snake_x[i] = snake_size - i - 1;
-				}
-			}
-			field[snake_x[i]] = tail_symbol;
-		}	
-		field[snake_x[0]] = head_symbol;
-		//============= END LOGIC =============
-
-		//============= BEGIN FOOD =============	
-		if (food_flag) {
-			draw_food(food_x);
-		}
-
-		while (!food_flag) {
-			food_x = rand() % size_field;
-			if (field[food_x] == 0) {
-				field[food_x] = food_symbol;
-				food_flag = true;
-			}		
-		}	
-		//============= END FOOD =============
 
 	}/*END while (game_on)*/
 
-	
+	std::cout << std::endl;
+	std::cout << "GAME OVER";
 	return 0;
 }

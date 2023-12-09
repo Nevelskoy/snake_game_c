@@ -1,6 +1,6 @@
 #pragma once
 
-const int columns = 20;
+const int columns = 10;
 const int L = columns - 2;				// max lenght Snake
 const char field_symbol = ' ';
 const char borderL_symbol = '-';

@@ -1,5 +1,31 @@
 #include "const.h"
+#include "field.h"
 
-DIRECTION direct = RIGHT;
-int snake_size = 1;   // max L
-int snake_x[L] = {0};                 
+DIRECTION direct;
+int snake_size;                  // max L
+int snake_x[L];                  // Snake's array of coordinates
+
+
+void init_snake() {
+    direct = RIGHT;
+    snake_size = 1;              
+    snake_x[L] = { 0 };
+}
+
+
+void move_snake() {
+	if (direct == RIGHT) {
+		snake_x[0]++;
+	}
+	else if (direct == LEFT) {
+		snake_x[0]--;
+	}
+
+	if (snake_x[0] > size_field - 1) {
+		snake_x[0] = 0;
+	}
+	else if (snake_x[0] < 0) {
+		snake_x[0] = size_field - 1;
+	}
+
+}

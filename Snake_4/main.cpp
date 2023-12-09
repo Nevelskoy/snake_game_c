@@ -7,7 +7,7 @@
 #include "field.h"
 #include "food.h"
 
-//#define AUTOMATIC
+#define AUTOMATIC
 
 int main() {
 	

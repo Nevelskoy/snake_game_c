@@ -1,2 +1,6 @@
 extern int snake_size;
-int snake_x[];
+extern DIRECTION direct;
+extern int snake_x[];
+
+void init_snake();
+void move_snake();
