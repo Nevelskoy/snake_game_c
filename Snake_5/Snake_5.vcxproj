@@ -18,6 +18,20 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="field.cpp" />
+    <ClCompile Include="food.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="snake.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="const.h" />
+    <ClInclude Include="field.h" />
+    <ClInclude Include="food.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="snake.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,20 +152,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Snake_4\field.cpp" />
-    <ClCompile Include="..\Snake_4\food.cpp" />
-    <ClCompile Include="..\Snake_4\game.cpp" />
-    <ClCompile Include="..\Snake_4\main.cpp" />
-    <ClCompile Include="..\Snake_4\snake.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Snake_4\const.h" />
-    <ClInclude Include="..\Snake_4\field.h" />
-    <ClInclude Include="..\Snake_4\food.h" />
-    <ClInclude Include="..\Snake_4\game.h" />
-    <ClInclude Include="..\Snake_4\snake.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
