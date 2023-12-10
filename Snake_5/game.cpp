@@ -6,7 +6,6 @@
 #include "food.h"
 
 bool game_on = true;
-bool manual = false;
 int timeout = 100;
 unsigned int codeKey = -1;
 /*Инициализация параметров игры	void init_game()

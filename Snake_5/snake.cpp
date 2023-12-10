@@ -10,6 +10,7 @@ void init_snake() {
     direct = RIGHT;
     snake_size = 1;              
     snake_x[L] = { 0 };
+	snake_x[0] = (columns / 3);
 }
 
 

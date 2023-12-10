@@ -5,6 +5,9 @@
 int field[columns] = {0};
 int size_field = columns - 2;
 
+void init_field() {
+
+}
 
 void print_field() {
 	for (int i = 0; i < columns; i++) {
@@ -25,4 +28,5 @@ void print_field() {
 	for (int i = 0; i < columns; i++) {
 		std::cout << borderL_symbol;
 	}
+	std::cout << std::endl;
 }

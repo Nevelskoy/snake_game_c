@@ -1,6 +1,6 @@
 #pragma once
 
-const int columns = 10;
+const int columns = 20;
 const int L = columns - 2;				// max lenght Snake
 const char field_symbol = ' ';
 const char borderL_symbol = '-';
@@ -22,6 +22,12 @@ enum KEYS {
 	UP_ARROW = 72,
 	DOWN_ARROW = 80,
 	ESC = 27
+};
+
+enum STATUS {
+	START,
+	GO,
+	FINISH
 };
 
 
