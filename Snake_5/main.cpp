@@ -12,19 +12,11 @@
 int main() {
 
 	status_bar();
+	print_field();
 	init_game();							
 	init_snake();						 
-	print_field();		
 	
-
-	while (status == RUN) {
-
-#ifdef AUTOMATIC
-		handle_cmd(false);
-#else	
-		handle_cmd(true);
-#endif  
-		
+	while (status == RUN) {	
 		clear_snake();		
 		status_bar();
 		move_snake();
@@ -33,7 +25,14 @@ int main() {
 		set_food();
 		print_field();
 		check_game();
+
+#ifdef AUTOMATIC
+		handle_cmd(false);
+#else	
+		handle_cmd(true);
+#endif 
 	}
+
 	status_bar();
 
 	return 0;

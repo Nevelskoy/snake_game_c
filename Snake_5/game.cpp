@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <iostream>
 #include <conio.h>
+#include "winconsole.h"
 #include "const.h"
 #include "snake.h"
 #include "field.h"
@@ -12,13 +13,14 @@ unsigned int codeKey = -1;
 
 
 void init_game() {
-	status = RUN;
 	_getch();
+	status = RUN;
+	system("cls");
 }
 
 
 void clear_snake() {
-	system("cls");
+	setCursorPosition(0, 0);
 }
 
 
@@ -65,12 +67,6 @@ void set_food() {
 	}
 }
 
-void check_game() {
-	if (snake_size > L - 1) {                //  (- 1) - the size of the food
-		status = FINISH;
-	}
-}
-
 
 void handle_cmd(bool handle) {
 	if (!handle) {
@@ -102,6 +98,13 @@ void handle_cmd(bool handle) {
 }
 
 
+void check_game() {
+	if (snake_size > L - 1) {                //  (- 1) - the size of the food
+		status = FINISH;
+	}
+}
+
+
 void status_bar() {
 	switch (status)
 	{
@@ -113,6 +116,7 @@ void status_bar() {
 		break;
 	case FINISH:
 		clear_snake();
+		system("cls");
 		std::cout << "GAME OVER!" << std::endl;
 		set_snake();
 		print_field();

@@ -24,6 +24,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="snake.cpp" />
+    <ClCompile Include="winconsole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="food.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="snake.h" />
+    <ClInclude Include="winconsole.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
