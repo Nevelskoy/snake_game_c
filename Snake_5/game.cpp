@@ -1,24 +1,19 @@
 #include <windows.h>
+#include <iostream>
 #include <conio.h>
 #include "const.h"
 #include "snake.h"
 #include "field.h"
 #include "food.h"
 
-bool game_on = true;
+STATUS status = START;
 int timeout = 100;
 unsigned int codeKey = -1;
-/*Инициализация параметров игры	void init_game()
-Установка змейки на поле игры	void set_snake()
-Проверка, что змейка съела еду	bool check_eating()
-Установка еды на поле игры	void set_food()
-Проверка конца игры	void check_game()
-Проверка столкновения змейки с границей	void check_snake()
-Очистка позиций змейки в игровом поле	void clear_snake()
-Обработка пользовательского ввода	void handle_cmd ()
-*/
+
 
 void init_game() {
+	status = RUN;
+	_getch();
 }
 
 
@@ -72,7 +67,7 @@ void set_food() {
 
 void check_game() {
 	if (snake_size > L - 1) {                //  (- 1) - the size of the food
-		game_on = false;
+		status = FINISH;
 	}
 }
 
@@ -80,17 +75,17 @@ void check_game() {
 void handle_cmd(bool handle) {
 	if (!handle) {
 		Sleep(timeout);
-		if (_kbhit()) {
+		if (_kbhit()) {	
 			codeKey = _getch();
 			if (codeKey == ESC) {
-				game_on = false;
+				status = FINISH;
 			}
 		}
 	}
 	else {
 		codeKey = _getch();
 		if (codeKey == ESC) {
-			game_on = false;
+			status = FINISH;
 		}
 		else if (codeKey == 224) {
 			codeKey = _getch();
@@ -106,3 +101,23 @@ void handle_cmd(bool handle) {
 
 }
 
+
+void status_bar() {
+	switch (status)
+	{
+	case START:
+		std::cout << "Welcom to the Snake-game! Press any key to start..." << std::endl;
+		break;
+	case RUN:
+		std::cout << "Run..." << std::endl;
+		break;
+	case FINISH:
+		clear_snake();
+		std::cout << "GAME OVER!" << std::endl;
+		set_snake();
+		print_field();
+		break;
+	default:
+		break;
+	}
+}

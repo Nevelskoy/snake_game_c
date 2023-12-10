@@ -26,7 +26,7 @@ enum KEYS {
 
 enum STATUS {
 	START,
-	GO,
+	RUN,
 	FINISH
 };
 

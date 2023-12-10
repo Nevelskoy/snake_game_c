@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include <conio.h>
 #include <windows.h>
 #include "const.h"
@@ -7,38 +7,34 @@
 #include "field.h"
 #include "food.h"
 
-//#define AUTOMATIC
+#define AUTOMATIC
 
 int main() {
+
+	status_bar();
+	init_game();							
+	init_snake();						 
+	print_field();		
 	
-	
-	init_game();			// 1.1.	инициализация игры 
-	// init_field()				 1.2.	инициализация игрового поля 
-	init_snake();				// 1.3.	инициализация змейки 
-	// init_food()						инициализация еды
-	// set_snake()			 	1.5.	“Установка” змейки в поле игры 
-	print_field();		//1.6.	Вывод поля игры на экран 	
-	std::cout << "Welcom to the Snake-game! Press any key to start..." << std::endl;
 
+	while (status == RUN) {
 
-
-
-	while (game_on) {
 #ifdef AUTOMATIC
 		handle_cmd(false);
 #else	
 		handle_cmd(true);
 #endif  
-		clear_snake();	
+		
+		clear_snake();		
+		status_bar();
 		move_snake();
 		set_snake();
 		check_eating();
 		set_food();
 		print_field();
-		check_game();	
+		check_game();
 	}
+	status_bar();
 
-	std::cout << std::endl;
-	std::cout << "GAME OVER";
 	return 0;
 }
