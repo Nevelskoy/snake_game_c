@@ -24,10 +24,3 @@ enum KEYS {
 	ESC = 27
 };
 
-enum STATUS {
-	START,
-	RUN,
-	FINISH
-};
-
-

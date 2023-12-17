@@ -1,4 +1,3 @@
-
 #include <conio.h>
 #include <windows.h>
 #include "const.h"
@@ -11,14 +10,12 @@
 
 int main() {
 
-	status_bar();
 	print_field();
 	init_game();							
 	init_snake();						 
 	
-	while (status == RUN) {	
-		clear_snake();		
-		status_bar();
+	while (game_on) {	
+		clear_field();
 		move_snake();
 		set_snake();
 		check_eating();
@@ -33,7 +30,6 @@ int main() {
 #endif 
 	}
 
-	status_bar();
 
 	return 0;
 }

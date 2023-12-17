@@ -1,13 +1,21 @@
 #include <iostream>
+#include "winconsole.h"
 #include "const.h"
 
 
 int field[columns] = {0};
 int size_field = columns - 2;
 
+
 void init_field() {
 
 }
+
+
+void clear_field() {
+	setCursorPosition(0, 0);
+}
+
 
 void print_field() {
 	for (int i = 0; i < columns; i++) {

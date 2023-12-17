@@ -8,7 +8,7 @@ int snake_x[L];                  // Snake's array of coordinates
 
 void init_snake() {
     direct = RIGHT;
-    snake_size = 1;              
+    snake_size = 4;              
     snake_x[L] = { 0 };
 	snake_x[0] = (columns / 3);
 }
