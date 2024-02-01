@@ -16,36 +16,15 @@ void init_game() {
 }
 
 
-void set_snake() {
-	for (int i = 1; i < snake_size; i++) {
-		if (direct == RIGHT) {
-			snake_x[i] = snake_x[0] - i;
-			if (snake_x[i] < 0) {
-				snake_x[i] = size_field - (snake_size - i);
-			}
-		}
-		else if (direct == LEFT) {
-			snake_x[i] = snake_x[0] + i;
-			if (snake_x[i] > size_field - 1) {
-				snake_x[i] = snake_size - i - 1;
-			}
-		}
-		field[snake_x[i]] = tail_symbol;
-	}
-	field[snake_x[0]] = head_symbol;
-}
-
-
 void check_eating() {
 	if (food_x == snake_x[0]) {
 		snake_size++;
 		food_flag = false;
 	}
-
 }
 
 
-void set_food() {
+void chek_food() {
 	if (food_flag) {
 		field[food_x] = food_symbol;
 	}

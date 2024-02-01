@@ -3,14 +3,9 @@
 #include "const.h"
 
 
-int field[columns] = {0};
-int size_field = columns - 2;
-
-
 void init_field() {
 
 }
-
 
 void print_border_field() {
 	setCursorPosition(0, 0);
@@ -30,7 +25,7 @@ void print_border_field() {
 	std::cout << std::endl;
 }
 
-void print_object_field() {
+void print_field(int* field, int& size_field) {
 	setCursorPosition(1, 1);
 	for (int i = 0; i < size_field; i++) {
 		if (field[i] > 0) {
@@ -41,4 +36,5 @@ void print_object_field() {
 			std::cout << field_symbol;
 		}
 	}
+	print_border_field();
 }

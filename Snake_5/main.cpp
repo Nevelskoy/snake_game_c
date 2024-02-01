@@ -10,17 +10,17 @@
 
 int main() {
 
-	print_field();
+//	print_field();
 	init_game();							
 	init_snake();						 
 	
 	while (game_on) {	
-		clear_field();
 		move_snake();
-		set_snake();
-		check_eating();
+		build_snake();
 		set_food();
-		print_field();
+		check_eating();
+		print_border_field();
+		print_object_field();
 		check_game();
 
 #ifdef AUTOMATIC
