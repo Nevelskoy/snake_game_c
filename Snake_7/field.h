@@ -1,3 +1,3 @@
 #pragma once
 
-void print_field(int* m_field, int& m_size_field);
+void print_field(char(*m_field)[rows]);

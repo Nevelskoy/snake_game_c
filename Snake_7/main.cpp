@@ -6,35 +6,35 @@
 #include "field.h"
 #include "food.h"
 
-#define AUTOMATIC
+//#define AUTOMATIC
 
 int main() {
 
-	bool game_on = true;
-	int timeout = 100;
-	int field[columns] = { 0 };
-	int size_field = columns - 2;
+	bool flag_game = true;
+	int timeout = 200;
+	char field[columns][rows]{0};
 	int snake_size = 1;
-	int snake_X[max_L]{ 0 };	
+	int snake_X[max_snake]{0};
+	int snake_Y[max_snake]{0};
 	bool food_flag = false;
-	int food_X = -1;
+	int food_X;
+	int food_Y;
 
-
-	init_game(game_on);
-	init_snake(snake_X, snake_size);
+	init_game(flag_game);
+	init_snake(snake_X, snake_Y);
 	
-	while (game_on) {	
-		move_snake(snake_X, size_field);
-		build_snake(snake_X, snake_size, field, size_field);
-		check_eating(snake_X, snake_size, food_X, food_flag);
-		set_food(food_X, food_flag, field, size_field);
-		print_field(field, size_field);
-		check_game(snake_size, game_on);
+	while (flag_game) {	
+		move_snake(snake_X, snake_Y, snake_size);
+		build_snake(snake_X, snake_Y, snake_size, field);
+		check_eating(snake_X, snake_Y, snake_size, food_X, food_Y, food_flag);
+		set_food(food_X, food_Y, food_flag, field);
+		print_field(field);
+		check_game(snake_size, flag_game, snake_X, snake_Y);
 
 #ifdef AUTOMATIC
-		handle_cmd(false, timeout, game_on);
+		handle_cmd(false, timeout, flag_game);
 #else	
-		handle_cmd(true, timeout, game_on);
+		handle_cmd(true, timeout, flag_game);
 #endif 
 	}
 	return 0;
