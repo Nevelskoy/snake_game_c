@@ -10,7 +10,6 @@
 
 #define AUTOMATIC
 
-static unsigned int codeKey = -1;
 
 size_t st_game::get_timeout() const {
 	return m_timeout;
@@ -72,14 +71,14 @@ void st_game::handle_cmd(bool m_handle, st_snake& snake) {
 	}
 	
 	switch (codeKey) {
-	case 'a': snake.set_direct(LEFT); break;
-	case 'w': snake.set_direct(UP); break;
-	case 's': snake.set_direct(DOWN); break;
-	case 'd': snake.set_direct(RIGHT); break;
-	case 'A': snake.set_direct(LEFT); break;
-	case 'W': snake.set_direct(UP); break;
-	case 'S': snake.set_direct(DOWN); break;
-	case 'D': snake.set_direct(RIGHT); break;
+	case 'a': codeKey = LEFT_ARROW; break;
+	case 'w': codeKey = UP_ARROW; break;
+	case 's': codeKey = DOWN_ARROW; break;
+	case 'd': codeKey = RIGHT_ARROW; break;
+	case 'A': codeKey = LEFT_ARROW; break;
+	case 'W': codeKey = UP_ARROW; break;
+	case 'S': codeKey = DOWN_ARROW; break;
+	case 'D': codeKey = RIGHT_ARROW; break;
 	}
 
 	// Запрет движения в противоположную сторону при наличии хвоста

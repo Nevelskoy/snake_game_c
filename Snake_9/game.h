@@ -9,6 +9,7 @@ struct st_game {
 private:
 	size_t m_timeout = 200;
 	bool m_flag_game = true;
+	unsigned int codeKey = -1;
 
 public:
 	st_game() {};

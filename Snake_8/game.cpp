@@ -61,14 +61,14 @@ void handle_cmd(bool m_handle, const size_t& m_timeout, bool& m_flag_game, size_
 	}
 
 	switch (codeKey) {
-	case 'a': m_current_mov = LEFT; break;
-	case 'w': m_current_mov = UP; break;
-	case 's': m_current_mov = DOWN; break;
-	case 'd': m_current_mov = RIGHT; break;
-	case 'A': m_current_mov = LEFT; break;
-	case 'W': m_current_mov = UP; break;
-	case 'S': m_current_mov = DOWN; break;
-	case 'D': m_current_mov = RIGHT; break;
+	case 'a': codeKey = LEFT_ARROW; break;
+	case 'w': codeKey = UP_ARROW; break;
+	case 's': codeKey = DOWN_ARROW; break;
+	case 'd': codeKey = RIGHT_ARROW; break;
+	case 'A': codeKey = LEFT_ARROW; break;
+	case 'W': codeKey = UP_ARROW; break;
+	case 'S': codeKey = DOWN_ARROW; break;
+	case 'D': codeKey = RIGHT_ARROW; break;
 	}
 
 	// Запрет движения в противоположную сторону при наличии хвоста
